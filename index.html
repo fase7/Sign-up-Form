@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      body {
+        background: rgb(9, 9, 121);
+        background: linear-gradient(
+          135deg,
+          rgba(9, 9, 121, 1) 0%,
+          rgba(14, 19, 72, 1) 0%,
+          rgba(18, 25, 39, 1) 30%,
+          rgba(18, 25, 39, 1) 50%,
+          rgba(18, 25, 39, 1) 70%,
+          rgba(15, 19, 68, 1) 100%,
+          rgba(9, 9, 121, 1) 100%
+        );
+        background-repeat: no-repeat;
+        margin: 0;
+      }
+      html,
+      body {
+        height: 100%;
+        justify-content: center;
+        align-items: center;
+      }
+      body,
+      .container,
+      .container .stPage,
+      .rdPage {
+        display: flex;
+        align-items: center;
+      }
+      body {
+        justify-content: center;
+      }
+      .container {
+        width: 30%;
+        background-color: #212837;
+        border-radius: 10px;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        -ms-border-radius: 10px;
+        -o-border-radius: 10px;
+        padding: 40px;
+        justify-content: start;
+        box-shadow: -3px -4px 53px -8px rgba(18, 17, 17, 0.499);
+        -webkit-box-shadow: -3px -4px 53px -8px rgba(18, 17, 17, 0.499);
+        -moz-box-shadow: -3px -4px 53px -8px rgba(18, 17, 17, 0.499);
+        border: 1px solid #607274;
+        align-self: center;
+        height: 350px;
+      }
+      .container h2 {
+        color: #b6bbc4;
+        font-size: 15px;
+        font-weight: bold;
+      }
+      .container h1 {
+        color: #b6bbc4;
+        font-size: 20px;
+        font-weight: bold;
+      }
+      .container .ndPage,
+      .rdPage,
+      .finPage {
+        display: none;
+      }
+      .container .stPage input {
+        width: 95%;
+        height: 40px;
+        border-radius: 15px;
+        -webkit-border-radius: 15px;
+        -moz-border-radius: 15px;
+        -ms-border-radius: 15px;
+        -o-border-radius: 15px;
+        outline: none;
+        border: 3px solid #607274;
+        background-color: #212837;
+        padding: 5px;
+        align-self: center;
+        padding-left: 20px;
+        color: white;
+        font-weight: bold;
+      }
+
+      .container .stPage,
+      .ndPage,
+      .rdPage {
+        height: 100%;
+        width: 95%;
+        flex-direction: column;
+        align-items: start;
+      }
+      .email {
+        margin-bottom: 40px;
+      }
+      button {
+        width: 30%;
+        height: 50px;
+        border-radius: 20px;
+        -webkit-border-radius: 20px;
+        -moz-border-radius: 20px;
+        -ms-border-radius: 20px;
+        -o-border-radius: 20px;
+        align-self: center;
+        background-color: #7444de;
+        outline: none;
+        border: none;
+        font-weight: bold;
+      }
+      button:hover {
+        box-shadow: 1px 3px 53px -8px rgba(116, 68, 222, 0.88);
+        -webkit-box-shadow: 1px 3px 53px -8px rgba(116, 68, 222, 0.88);
+        -moz-box-shadow: 1px 3px 53px -8px rgba(116, 68, 222, 0.88);
+        transition: 0.4s;
+        -webkit-transition: 0.4s;
+        -moz-transition: 0.4s;
+        -ms-transition: 0.4s;
+        -o-transition: 0.4s;
+        cursor: pointer;
+        color: aliceblue;
+      }
+      .container .stPage input:focus::-webkit-input-placeholder {
+        color: transparent;
+        transition: 0.5s;
+      }
+      input:focus:-moz-placeholder {
+        color: transparent;
+        transition: 0.5s;
+      } /* FF 4-18 */
+      input:focus::-moz-placeholder {
+        color: transparent;
+        transition: 0.5s;
+      } /* FF 19+ */
+      input:focus:-ms-input-placeholder {
+        color: transparent;
+        transition: 0.5s;
+        -webkit-transition: 0.5s;
+        -moz-transition: 0.5s;
+        -ms-transition: 0.5s;
+        -o-transition: 0.5s;
+      } /* IE 10+ */
+      #stPage,
+      #ndPage,
+      .finPage {
+        transition: opacity 0.5s, visibility 0.5s;
+      }
+
+      .hidden {
+        opacity: 0;
+        visibility: hidden;
+      }
+
+      .visible {
+        opacity: 1;
+        visibility: visible;
+      }
+      /* Container styles */
+      .container .ndPage {
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+
+      /* Hide radio buttons */
+      .ndPage input[type="checkbox"] {
+        display: none;
+      }
+
+      /* Label styles */
+      .ndPage label {
+        width: 95%;
+        height: 40px;
+        border-radius: 15px;
+        outline: none;
+        border: 1px solid #607274;
+        background-color: #394151;
+        padding: 5px;
+        padding-left: 20px;
+        color: #83858f;
+        font-weight: bold;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        transition: background-color 0.5s, border-color 0.5s;
+        -webkit-transition: background-color 0.5s, border-color 0.5s;
+        -moz-transition: background-color 0.5s, border-color 0.5s;
+        -ms-transition: background-color 0.5s, border-color 0.5s;
+        -o-transition: background-color 0.5s, border-color 0.5s;
+      }
+
+      /* Checked state styles */
+      .ndPage input[type="checkbox"]:checked + label {
+        background-color: #7444de;
+        color: white;
+        border-color: #7444de;
+      }
+      .container .rdPage {
+        flex-direction: column;
+        justify-content: center;
+      }
+      .container .rdPage div {
+        display: flex;
+        justify-content: start;
+        width: 100%;
+        align-items: center;
+        color: aliceblue;
+      }
+      .container .rdPage div h2 {
+        margin-right: 20px;
+        font-size: 15px;
+      }
+      #finPage {
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+      }
+      @media only screen and (max-width: 768px) {
+        button {
+          width: 100%;
+        }
+        .container h1 {
+          font-size: 15px !important;
+        }
+      }
+    </style>
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="stPage" id="stPage">
+        <h1>Regestire</h1>
+        <h2>Name</h2>
+        <input placeholder="enter your name" type="text" name="" id="name" />
+        <h2 class="">Email</h2>
+        <input
+          class="email"
+          placeholder="example@gmail.com"
+          type="email"
+          name=""
+          id="email"
+        />
+        <button id="btn">Continue</button>
+      </div>
+      <div id="ndPage" class="ndPage">
+        <h1>Which Topics Are You Interested In</h1>
+        <input type="checkbox" name="topic" id="software" value="Software" />
+        <label for="software">Software</label>
+        <input
+          type="checkbox"
+          name="topic"
+          id="userExperience"
+          value="User Experience"
+        />
+        <label for="userExperience">User Experience</label>
+        <input
+          type="checkbox"
+          name="topic"
+          id="graphicsDesign"
+          value="Graphics Design"
+        />
+        <label for="graphicsDesign">Graphics Design</label>
+        <button id="btn2">Continue</button>
+      </div>
+
+      <div class="rdPage" id="rdPage">
+        <h1>Summary</h1>
+        <div class="nam">
+          <h2>Name:</h2>
+          <p id="namet"></p>
+        </div>
+        <div class="emai">
+          <h2>Email:</h2>
+          <p id="emailt"></p>
+        </div>
+        <div class="summary">
+          <h2>Summary:</h2>
+          <p id="selectedTopics"></p>
+        </div>
+        <button id="done">Confirm</button>
+      </div>
+      <div class="finPage" id="finPage">
+        <h1>it's done thx :></h1>
+      </div>
+    </div>
+  </body>
+  <script>
+    const stPage = document.getElementById("stPage");
+    const btn = document.getElementById("btn");
+    const ndPage = document.getElementById("ndPage");
+    const btn2 = document.getElementById("btn2");
+    let exitname = "";
+    let exitemail = "";
+    let selectedTopics = [];
+    const done = document.getElementById("done");
+    btn.addEventListener("click", function hide() {
+      stPage.classList.add("hidden");
+      stPage.classList.remove("visible");
+      exitname = document.getElementById("name").value;
+      exitemail = document.getElementById("email").value;
+      setTimeout(() => {
+        stPage.style.display = "none";
+        ndPage.style.display = "flex";
+        ndPage.classList.add("visible");
+        ndPage.classList.remove("hidden");
+      }, 500);
+    });
+    btn2.addEventListener("click", function hide() {
+      ndPage.classList.add("hidden");
+      ndPage.classList.remove("visible");
+      selectedTopics = [];
+      const checkedCheckboxes = document.querySelectorAll(
+        'input[name="topic"]:checked'
+      );
+      checkedCheckboxes.forEach((checkbox) => {
+        const label = document.querySelector(
+          `label[for="${checkbox.id}"]`
+        ).textContent;
+        selectedTopics.push(label);
+      });
+      setTimeout(() => {
+        ndPage.style.display = "none";
+        rdPage.style.display = "flex";
+        rdPage.classList.add("visible");
+        rdPage.classList.remove("hidden");
+        document.getElementById("namet").textContent = exitname;
+        document.getElementById("emailt").textContent = exitemail;
+        document.getElementById("selectedTopics").textContent =
+          selectedTopics.join(", ");
+      }, 500);
+    });
+    done.addEventListener("click", function done() {
+      rdPage.classList.add("hidden");
+      rdPage.classList.remove("visible");
+      setTimeout(() => {
+        rdPage.style.display = "none";
+        finPage.style.display = "flex";
+        finPage.classList.add("visible");
+        finPage.classList.remove("hidden");
+      }, 500);
+    });
+  </script>
+</html>
